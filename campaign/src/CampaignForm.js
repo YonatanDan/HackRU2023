@@ -4,14 +4,14 @@ import Skills from './Skills';
 import Chat from './chat-components/Chat';
 
 function CampaignForm() {
-  const [chatButton, setChatButton] = useState(false); 
+  const [chatButton, setChatButton] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     startDate: '',
     endDate: '',
     history: false,
     pastConclusions: '',
-    skills: ['Customer Service', 'Sales', 'Marketing', 'Tech Support'],
+    skills: [],
     selectedSkills: '',
 
   });
@@ -26,7 +26,7 @@ function CampaignForm() {
       history: formData.history,
       previous_insights: formData.pastConclusions,
       skills: ['asdmfk', 'asdjfnasdf']
-    })
+    }).catch(error => {});
   };
 
   const handleChange = (event) => {
