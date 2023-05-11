@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, current_app
 from concurrent.futures import ThreadPoolExecutor
 import openai
-from flask_cors import cross_origin, CORS
+from flask_cors import CORS
 
 from .models import Campaign
 from .config import ProductionConfig
@@ -105,10 +105,13 @@ def get_skills():
         ]
     })
 
-@nicer_api.route('/api/v1/campaing/get_pop/<campaign_id>', methods=['GET'])
-def get_pop(campaign_id):
+@nicer_api.route('/api/v1/campaing/get_pop/<campaign_id>/<index>', methods=['GET'])
+def get_pop(campaign_id=None, index='0'):
     if campaign_id not in results:
         return jsonify({'message': 'Campaign not found!'}), 404
+
+    if not (index.isdigit() and int(index) >= 0 and int(index) < 10):
+        return jsonify({'message': 'Invalid index!'}), 400
 
     result = results[campaign_id]
     return jsonify(result)
