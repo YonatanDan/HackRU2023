@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Skills from './Skills';
+import Chat from './chat-components/Chat';
 
 function CampaignForm() {
+  const [chatButton, setChatButton] = useState(false); 
   const [formData, setFormData] = useState({
     name: '',
     startDate: '',
@@ -59,10 +61,14 @@ function CampaignForm() {
         <Skills skillsList={formData.skills} />
       </div>
       <div className="form-group">
-        <button className="submit-button" type="submit">Submit</button>
+          <button className="submit-button" type="submit">Submit</button>
       </div>
+      <div className='form-group'>
+          <button onClick={() => setChatButton(!chatButton)} className="chat-btn">Consult ChatGPT</button>
+      </div>
+      <Chat trigger={chatButton}> </Chat>
     </form>
-  );
+  )
 }
 
 export default CampaignForm;

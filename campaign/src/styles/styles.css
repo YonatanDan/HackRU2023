@@ -9,9 +9,10 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
-	min-height: 91vh;
+	min-height: 20vh;
 	background-color: gradient(to bottom, var(--primary-color), var(--secondary-color));
 }
+
 
 .CampaignForm {
     display: flex;
@@ -78,5 +79,26 @@
 	font-size: 1.2rem;
 	background-color: #1e90ff;
 	color: white;
+	cursor: pointer;
+}
+
+.CampaignForm .form-group .last-buttons {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	margin: 1rem 0.5rem;
+	flex: 1;
+	max-width: 50%;
+}
+
+.CampaignForm .form-group .chat-btn {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	font-size: 1.0rem;
+	background-color: #7423D2; 
+	color: white; 
+	border: none;
 	cursor: pointer;
 }

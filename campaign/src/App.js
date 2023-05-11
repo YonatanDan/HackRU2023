@@ -8,6 +8,8 @@ function App() {
       <div className='content-container'>
         <CampaignForm />
       </div>
+      <div className='content-container'>
+      </div>
     </div>
   );
 }

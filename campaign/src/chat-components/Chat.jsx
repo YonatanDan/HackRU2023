@@ -1,11 +1,13 @@
 import { Configuration, OpenAIApi } from 'openai';
 
+import '../styles/Chat.css';
+
 import FormSection from './FormSection';
 import AnswerSection from './AnswerSection';
 
 import { useState } from 'react';
 
-const Chat = () => {
+const Chat = (props) => {
     const REACT_APP_OPENAI_API_KEY='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'
 
 	const configuration = new Configuration({
@@ -46,7 +48,7 @@ const Chat = () => {
 		}
 	};
 
-	return (
+	return (props.trigger) ? (
 		<div>
 			<div className="header-section">
 				<h1>ChatGPT</h1>
@@ -60,7 +62,7 @@ const Chat = () => {
 
 			{storedValues.length > 0 && <AnswerSection storedValues={storedValues} />}
 		</div>
-	);
+	) : "";
 };
 
 export default Chat;
