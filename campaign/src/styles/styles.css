@@ -201,6 +201,10 @@ section .content-container{
 	transition: color 0.3s ease;
   }
 
+  .navbar .menu .population-link {
+	color: #ffcd71 /* Replace with your desired color */
+  }
+
   /* Navbar link hover effect */
   .navbar .menu li a:hover {
 	color: #FFA500;; /* Set the color for the hover effect */
@@ -241,4 +245,13 @@ section .content-container{
   .population-list li,
   .suggestion-list li {
 	list-style-type: disc;
+  }
+
+  .population-link {
+	color: #7423D2;
+	text-decoration: none;
+  }
+
+  .population-link:hover {
+	color:#FFA500;
   }

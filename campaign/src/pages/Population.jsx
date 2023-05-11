@@ -1,38 +1,45 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import '../styles/Population.css';
-const Population = () => {
+
+const Population = ({ population }) => {
+  const postRef = useRef(null);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    const postText = postRef.current.innerText;
+    navigator.clipboard.writeText(postText);
+    setCopied(true);
+  };
+
   return (
     <div className="population-container">
       <h1>Population Details</h1>
       <div className="field-container">
         <p className="field-label">Population Name:</p>
-        <p className="field-value">Population A</p>
+        <p className="field-value">{population.name}</p>
       </div>
       <div className="field-container">
         <p className="field-label">Percentage of total population:</p>
-        <p className="field-value">30%</p>
+        <p className="field-value">{population.percentage}</p>
       </div>
       <div className="field-container">
-        <p className="field-label">Main Platform/s:</p>
-        <p className="field-value">Platform A, Platform B</p>
+        <p className="field-label">Main Platforms:</p>
+        <p className="field-value">{population.platforms.join(", ")}</p>
       </div>
       <div className="field-container">
         <p className="field-label">Social Media Post Suggestions:</p>
-        <ul className="suggestion-list">
-          <li>Suggestion 1</li>
-          <li>Suggestion 2</li>
-          <li>Suggestion 3</li>
-          <li>Suggestion 4</li>
-          <li>Suggestion 5</li>
-        </ul>
+        <div className="post-container">
+          <div className={`post-box ${copied ? 'copied' : ''}`} ref={postRef}>
+            <p className="field-value">{population.post}</p>
+          </div>
+          <button className={`copy-button ${copied ? 'copied' : ''}`} onClick={handleCopy}>
+            {copied ? 'Copied' : 'Copy'}
+          </button>
+        </div>
       </div>
       <div className="field-container">
-        <p className="field-label">Must Know Things / Accessibility Issues:</p>
-        <ul className="accessibility-list">
-          <li>Issue 1</li>
-          <li>Issue 2</li>
-          <li>Issue 3</li>
-        </ul>
+        <p className="field-label">Must Know Things:</p>
+        <p className="field-value">{population.mtk}</p>
       </div>
     </div>
   );

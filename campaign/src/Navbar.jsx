@@ -1,23 +1,32 @@
 import React from "react";
-import './styles/styles.css';
-import { Link } from "react-router-dom";
+import "./styles/styles.css";
+import { NavLink } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ populations }) {
   return (
     <nav className="navbar">
       <ul className="menu">
         <li>
-          <Link to="/">Home</Link>
+          <NavLink exact to="/" activeClassName="activeLink">
+            Campaign Form
+          </NavLink>
         </li>
         <li>
-          <Link to="/CampaignForm">Campaign Form</Link>
+          <NavLink to="/response" activeClassName="activeLink">
+            Response
+          </NavLink>
         </li>
-        <li>
-          <Link to="/Response">Response</Link>
-        </li>
-        <li>
-          <Link to="/Population">Population</Link>
-        </li>
+        {populations.map((population, index) => (
+          <li key={index}>
+            <NavLink
+              to={`/population/${population.name.replace(/\s+/g, '-').toLowerCase()}`}
+              activeClassName="activeLink"
+              className="population-link" // Add a CSS class for population links
+            >
+              {population.name}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </nav>
   );
