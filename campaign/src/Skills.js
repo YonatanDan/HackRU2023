@@ -6,8 +6,8 @@ const Skills = () => {
     const [selectedSkills, setSelectedSkills] = useState([]);
 
     useEffect(() => {
-      axios.get('https://example.com/api/skills')
-        .then(response => setSkillsList(response.data))
+      axios.get('http://127.0.0.1:5000/api/v1/skills/get')
+        .then(response => setSkillsList(response.data.skills))
         .catch(error => console.error(error));
     }, []);
 
