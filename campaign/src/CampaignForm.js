@@ -63,7 +63,7 @@ function CampaignForm() {
       </div>
       <div className="form-group">
         <label>Skills:</label>
-        <Skills skillsList={formData.skills} />
+        <Skills />
       </div>
       <div className="form-group">
         <button className="submit-button" type="submit">Submit</button>
