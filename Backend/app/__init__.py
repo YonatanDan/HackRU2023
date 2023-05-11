@@ -5,9 +5,9 @@ def create_app():
     app = Flask(__name__)
 
     # import the routes
-    from .routes import hello_world
+    from .routes import nicer_api
 
     # register the routes with the app
-    app.register_blueprint(hello_world)
+    app.register_blueprint(nicer_api)
 
     return app
