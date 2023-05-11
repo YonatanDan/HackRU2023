@@ -18,7 +18,9 @@ def openai_get_campaign_insights(campaign : Campaign, api_key: str):
 
     completion = openai.ChatCompletion.create(
         model=MODEL,
-        messages=[{"role": "user", "content": "Hello world"}]
+        messages=[{
+            "role": "user","content": "Hello world"
+        }]
     )
 
     return {
