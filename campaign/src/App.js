@@ -1,25 +1,66 @@
-import logo from './logo.svg';
 import './App.css';
+import { Configuration, OpenAIApi } from 'openai';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import FormSection from './chat-components/FormSection';
+import AnswerSection from './chat-components/AnswerSection';
+
+import { useState } from 'react';
+
+const App = () => {
+	const configuration = new Configuration({
+		apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+	});
+
+    console.log(REACT_APP_OPENAI_API_KEY)
+	const openai = new OpenAIApi(configuration);
+
+	const [storedValues, setStoredValues] = useState([]);
+
+	const generateResponse = async (newQuestion, setNewQuestion) => {
+		let options = {
+			model: 'text-davinci-003',
+			temperature: 0,
+			max_tokens: 100,
+			top_p: 1,
+			frequency_penalty: 0.0,
+			presence_penalty: 0.0,
+			stop: ['/'],
+		};
+
+		let completeOptions = {
+			...options,
+			prompt: newQuestion,
+		};
+
+		const response = await openai.createCompletion(completeOptions);
+
+		if (response.data.choices) {
+			setStoredValues([
+				{
+					question: newQuestion,
+					answer: response.data.choices[0].text,
+				},
+				...storedValues,
+			]);
+			setNewQuestion('');
+		}
+	};
+
+	return (
+		<div>
+			<div className="header-section">
+				<h1>ChatGPT</h1>
+				{storedValues.length < 1 && (
+					<p>
+					</p>
+				)}
+			</div>
+
+			<FormSection generateResponse={generateResponse} />
+
+			{storedValues.length > 0 && <AnswerSection storedValues={storedValues} />}
+		</div>
+	);
+};
 
 export default App;
