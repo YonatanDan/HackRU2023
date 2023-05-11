@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import './styles/styles.css';
 
-import Layout from "./pages/Layout.jsx";
-import Response from "./pages/Response.jsx";
+import CampaignForm from './pages/CampaignForm.js';
 import Home from "./pages/Home.js";
+import Layout from "./pages/Layout.jsx";
 import Population from "./pages/Population.jsx";
-import CampaignForm from './pages/CampaignForm';
+import Response from "./pages/Response.jsx";
 
 function App() {
   return (

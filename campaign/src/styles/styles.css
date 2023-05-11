@@ -1,16 +1,59 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,500;1,600;1,700;1,800&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+}
+
 :root {
 	--primary-color: #7423D2;
-	--secondary-color: #FFFFFF;
+	--secondary-color: aliceblue;
 	--orange-contrast: #FFA500;
 }
-.content-container{
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-around;
-	min-height: 20vh;
-	background-color: gradient(to bottom, var(--primary-color), var(--secondary-color));
+
+section {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    min-height: 92vh;
+    width: 100%;
+	background-color: var(--secondary-color);
+}
+
+section >* {
+    max-width: 80%;
+    margin: auto;
+}
+
+section .content-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.content-container header {
+    width: 100%;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    text-align: center;
+	font-size: 2rem;
 }
 
 
@@ -19,33 +62,26 @@
     flex-wrap: wrap;
     justify-content: center;
     padding: 2rem;
-    background-color: #f5f5f5;
+    background-color: white;
     border-radius: 0.5rem;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-		min-height: 100%;
-		max-width: 90%;
 }
 
 .CampaignForm .form-group {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	align-items: center;
-	margin: 1rem 0.5rem;
-	flex: 1;
-	max-width: 50%;
-}
-.CampaignForm .form-group label {
-	margin-right: 1rem;
+    display: flex;
+    max-width: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
 }
 
 .CampaignForm .form-group input, textarea, select {
 	flex: 1;
 	border: none;
 	border-radius: 0.5rem;
-	padding: 0.5rem;
-	margin-top: 0.25rem;
-	margin-bottom: 0.25rem;
+	padding: 0.5rem 1rem;
+	background-color: var(--secondary-color);
 }
 
 .CampaignForm .form-group .skill-toggles {
@@ -57,7 +93,28 @@
 	margin-bottom: 0.25rem;
 }
 
-.CampaignForm .form-group .skill-toggles .skill-button {
+
+.skills-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+  }
+
+  .skill {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 1.5rem;
+	width: 1.5rem;
+	background-color: #7423D2;
+	color: white;
+	border-radius: 0.25rem;
+	font-size: 0.75rem;
+  }
+/* .CampaignForm .form-group .skill-toggles .skill-button {
 	background-color: transparent;
 	border: 1px solid purple;
 	border-radius: 0.5rem;
@@ -66,7 +123,7 @@
 	margin-right: 0.5rem;
 	margin-bottom: 0.5rem;
 	padding: 0.5rem;
-}
+} */
 
 /* .CampaignForm .form-group .skill-toggles .selected {
 	background-color: #4CAF50;
@@ -116,13 +173,13 @@
 	border-radius: 10px; /* Add rounded corners */
 	width: 100%;
   }
-  
+
   /* Navbar logo */
   .navbar .logo {
 	font-size: 24px;
 	font-weight: bold;
   }
-  
+
   /* Navbar menu */
   .navbar .menu {
 	list-style-type: none;
@@ -130,12 +187,12 @@
 	padding: 0;
 	display: flex;
   }
-  
+
   /* Navbar menu items */
   .navbar .menu li {
 	margin-left: 20px; /* Adjust the spacing between menu items */
   }
-  
+
   /* Navbar links */
   .navbar .menu li a {
 	color: #FFFFFF;; /* Set the color of the links */
@@ -143,7 +200,7 @@
 	font-size: 16px;
 	transition: color 0.3s ease;
   }
-  
+
   /* Navbar link hover effect */
   .navbar .menu li a:hover {
 	color: #FFA500;; /* Set the color for the hover effect */
@@ -162,27 +219,26 @@
 		min-height: 100%;
 		max-width: 90%;
   }
-  
+
   .field-container {
 	margin-bottom: 15px;
   }
-  
+
   .field-label {
 	font-weight: bold;
 	margin-bottom: 5px;
   }
-  
+
   .field-value {
 	margin: 0;
   }
-  
+
   .population-list,
   .suggestion-list {
 	padding-left: 20px;
   }
-  
+
   .population-list li,
   .suggestion-list li {
 	list-style-type: disc;
   }
-  
