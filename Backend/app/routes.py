@@ -41,12 +41,7 @@ def _store_result(campaign: Campaign, api_key: str):
     results[campaign.uuid] = result
 
 
-@nicer_api.route('/')
-def hello():
-    return jsonify({'message': 'Hello, World!'})
-
-
-@nicer_api.route('/campaign/generate', methods=['POST'])
+@nicer_api.route('/api/v1/campaign/create', methods=['POST'])
 def generate_campaign():
     api_key = ProductionConfig.OPENAI_API_KEY
     data = request.get_json()
@@ -64,27 +59,16 @@ def generate_campaign():
         skills=data['skills'],
     )
 
-    current_app.logger.critical(f'Campaign generated successfully!')
-    current_app.logger.critical(f'Campaign: {campaign}')
-    current_app.logger.critical(f'Campaign start_date {campaign.start_date}')
-    current_app.logger.critical(f'Campaign end_date {campaign.end_date}')
-    current_app.logger.critical(f'Campaign should_consider_history {campaign.should_consider_history}')
-    current_app.logger.critical(f'Campaign previous_insights {campaign.previous_insights}')
-    current_app.logger.critical(f'Campaign skills {campaign.skills}')
-
     executor.submit(_store_result, campaign, api_key)
 
-    response = jsonify({
+    return jsonify({
         'uuid': campaign.uuid,
         'message': 'Campaign Generated Started',
         'status': 'success'
     })
-    response.headers.add('Access-Control-Allow-Origin', '*')
-
-    return response, 200
 
 
-@nicer_api.route('/campaign/get/<campaign_id>', methods=['GET'])
+@nicer_api.route('/api/v1/campaign/get/<campaign_id>', methods=['GET'])
 def get_campaign(campaign_id):
     if campaign_id not in results:
         return jsonify({'message': 'Campaign not found!'}), 404
@@ -92,3 +76,14 @@ def get_campaign(campaign_id):
     result = results[campaign_id]
     del results[campaign_id]
     return jsonify(result)
+
+
+@nicer_api.route('/api/v1/skills/get', methods=['GET'])
+def get_skills():
+    return jsonify({
+        'skills': [
+            'Skill 1',
+            'Skill 2',
+            'Skill 3',
+        ]
+    })
