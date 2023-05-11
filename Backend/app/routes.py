@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, current_app
 from concurrent.futures import ThreadPoolExecutor
 import openai
 
@@ -14,17 +14,23 @@ MODEL = 'gpt-3.5-turbo'
 
 
 def openai_get_campaign_insights(campaign : Campaign, api_key: str):
-    openai.api_key = api_key
+    # openai.api_key = api_key
 
-    completion = openai.ChatCompletion.create(
-        model=MODEL,
-        messages=[{
-            "role": "user","content": "Hello world"
-        }]
-    )
+    # completion = openai.ChatCompletion.create(
+    #     model=MODEL,
+    #     messages=[{
+    #         "role": "user","content": "Hello world"
+    #     }]
+    # )
 
     return {
-        'chat_response': completion.choices[0].message.content
+        'name': campaign.name,
+        'start_date': campaign.start_date,
+        'end_date': campaign.end_date,
+        'should_consider_history': campaign.should_consider_history,
+        'previous_insights': campaign.previous_insights,
+        'skills': campaign.skills,
+        'skills_for_prompt': campaign.skills_for_prompt(),
     }
 
 
@@ -43,16 +49,33 @@ def generate_campaign():
     api_key = ProductionConfig.OPENAI_API_KEY
     data = request.get_json()
 
-    if not all(field in data for field in ['name', 'description']):
+    if not all(field in data for field in ['name', 'start_date', 'end_date',
+                                           'history', 'previous_insights', 'skills']):
         return jsonify({'message': 'Invalid request parameters!'}), 400
 
-    campaign = Campaign(data['name'], data['description'])
+    campaign = Campaign(
+        name=data['name'],
+        start_date=data['start_date'],
+        end_date=data['end_date'],
+        should_consider_history=data['history'],
+        previous_insights=data['previous_insights'],
+        skills=data['skills'],
+    )
+
+    current_app.logger.critical(f'Campaign generated successfully!')
+    current_app.logger.critical(f'Campaign: {campaign}')
+    current_app.logger.critical(f'Campaign start_date {campaign.start_date}')
+    current_app.logger.critical(f'Campaign end_date {campaign.end_date}')
+    current_app.logger.critical(f'Campaign should_consider_history {campaign.should_consider_history}')
+    current_app.logger.critical(f'Campaign previous_insights {campaign.previous_insights}')
+    current_app.logger.critical(f'Campaign skills {campaign.skills}')
+
     executor.submit(_store_result, campaign, api_key)
 
     return jsonify({
         'uuid': campaign.uuid,
         'message': 'Campaign Generated Started',
-        'api_key': api_key
+        'status': 'success'
     })
 
 

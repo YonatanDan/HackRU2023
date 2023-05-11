@@ -1,4 +1,5 @@
 import datetime
+from typing import List
 import uuid
 
 class Campaign:
@@ -8,14 +9,14 @@ class Campaign:
         self.__name = name
 
         # Convert dates to datetime objects
-        if start_date is None:
-            self.__start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d')
-
-        if end_date is None:
-            self.__end_date = datetime.datetime.strptime(end_date, '%Y-%m-%d')
+        self.__start_date = start_date
+        self.__end_date = end_date
         self.__should_consider_history = should_consider_history
         self.__previous_insights = previous_insights
-        self.__skills = skills
+        self.__skills: List[str] = skills
+
+    def get_fields(self):
+        return [field for field in dir(self) if not field.startswith('__') and not callable(getattr(self, field))].remove('uuid')
 
     @property
     def name(self):
@@ -40,6 +41,9 @@ class Campaign:
     @property
     def skills(self):
         return self.__skills
+
+    def skills_for_prompt(self):
+        return ', '.join(self.skills)
 
     @property
     def uuid(self):
