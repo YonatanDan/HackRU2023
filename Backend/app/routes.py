@@ -82,8 +82,17 @@ def get_campaign(campaign_id):
 def get_skills():
     return jsonify({
         'skills': [
-            'Skill 1',
-            'Skill 2',
-            'Skill 3',
+            'Skill 1', 'Skill 2', 'Skill 3', 'Skill 4', 'Skill 5',
+            'Skill 6', 'Skill 7', 'Skill 8', 'Skill 9', 'Skill 10',
+            'Skill 11', 'Skill 12', 'Skill 13', 'Skill 14', 'Skill 15',
+            'Skill 16', 'Skill 17', 'Skill 18', 'Skill 19', 'Skill 20',
         ]
     })
+
+@nicer_api.route('/api/v1/campaing/get_pop/<campaign_id>', methods=['GET'])
+def get_pop(campaign_id):
+    if campaign_id not in results:
+        return jsonify({'message': 'Campaign not found!'}), 404
+
+    result = results[campaign_id]
+    return jsonify(result)

@@ -13,7 +13,7 @@ class Campaign:
         self.__end_date = end_date
         self.__should_consider_history = should_consider_history
         self.__previous_insights = previous_insights
-        self.__skills: List[str] = skills
+        self.__skills: List[str] = skills if skills else []
 
     def get_fields(self):
         return [field for field in dir(self) if not field.startswith('__') and not callable(getattr(self, field))].remove('uuid')
