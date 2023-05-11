@@ -1,6 +1,6 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import Skills from './Skills';
-
 function CampaignForm() {
   const [formData, setFormData] = useState({
     name: '',
@@ -16,14 +16,14 @@ function CampaignForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // axios.post("http://127.0.0.1:5000/campaign/generate",{
-    //   name: formData.name,
-    //   start_date: formData.startDate,
-    //   end_date: formData.endDate,
-    //   history: formData.history,
-    //   previous_insights: formData.pastConclusions,
-    //   skills: ['asdmfk', 'asdjfnasdf']
-    // })
+    axios.post("http://127.0.0.1:5000/campaign/generate",{
+      name: formData.name,
+      start_date: formData.startDate,
+      end_date: formData.endDate,
+      history: formData.history,
+      previous_insights: formData.pastConclusions,
+      skills: ['asdmfk', 'asdjfnasdf']
+    })
   };
 
   const handleChange = (event) => {
