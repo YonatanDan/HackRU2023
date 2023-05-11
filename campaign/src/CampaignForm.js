@@ -6,7 +6,7 @@ function CampaignForm() {
     name: '',
     startDate: '',
     endDate: '',
-    history: '',
+    history: false,
     pastConclusions: '',
     skills: ['Customer Service', 'Sales', 'Marketing', 'Tech Support'],
     selectedSkills: '',
@@ -16,7 +16,14 @@ function CampaignForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // TODO: Submit the form data to your backend using an API call or form submission
+    // axios.post("http://127.0.0.1:5000/campaign/generate",{
+    //   name: formData.name,
+    //   start_date: formData.startDate,
+    //   end_date: formData.endDate,
+    //   history: formData.history,
+    //   previous_insights: formData.pastConclusions,
+    //   skills: ['asdmfk', 'asdjfnasdf']
+    // })
   };
 
   const handleChange = (event) => {
