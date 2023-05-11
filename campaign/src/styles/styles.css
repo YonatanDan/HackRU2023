@@ -68,10 +68,10 @@
 	padding: 0.5rem;
 }
 
-.CampaignForm .form-group .skill-toggles .selected {
+/* .CampaignForm .form-group .skill-toggles .selected {
 	background-color: #4CAF50;
 	color: white;
-}
+} */
 
 .CampaignForm .form-group .submit-button {
 	margin-top: 1rem;
@@ -99,8 +99,8 @@
 	height: 80px;
 	border-radius: 50%;
 	font-size: 1.0rem;
-	background-color: #7423D2; 
-	color: white; 
+	background-color: #7423D2;
+	color: white;
 	border: none;
 	cursor: pointer;
 }
