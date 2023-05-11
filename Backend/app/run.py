@@ -5,6 +5,7 @@ from .config import ProductionConfig
 app = create_app()
 app.config.from_object(ProductionConfig)
 
+
 if __name__ == '__main__':
     # start the app
     # log the start of the app using the logger

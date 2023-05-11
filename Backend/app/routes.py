@@ -1,12 +1,14 @@
 from flask import Blueprint, jsonify, request, current_app
 from concurrent.futures import ThreadPoolExecutor
 import openai
+from flask_cors import cross_origin, CORS
 
 from .models import Campaign
 from .config import ProductionConfig
 
 
 nicer_api = Blueprint('nicer_api', __name__)
+CORS(nicer_api)
 
 executor = ThreadPoolExecutor(10)
 results = {}
@@ -72,11 +74,14 @@ def generate_campaign():
 
     executor.submit(_store_result, campaign, api_key)
 
-    return jsonify({
+    response = jsonify({
         'uuid': campaign.uuid,
         'message': 'Campaign Generated Started',
         'status': 'success'
     })
+    response.headers.add('Access-Control-Allow-Origin', '*')
+
+    return response, 200
 
 
 @nicer_api.route('/campaign/get/<campaign_id>', methods=['GET'])
