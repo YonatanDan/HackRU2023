@@ -41,7 +41,8 @@ function CampaignForm() {
       end_date: formData.endDate,
       history: formData.history,
       previous_insights: formData.pastConclusions,
-      skills: formData.selectedSkills
+      skills: formData.selectedSkills,
+      description: formData.description
     }).then(response => {
       console.log(response.data.uuid);
     }).catch(error => {});
@@ -96,6 +97,10 @@ function CampaignForm() {
       <div className="form-group">
         <label htmlFor="name">Campaign Name:</label>
         <input type="text" name="name" id="name" value={formData.name} onChange={handleChange} />
+      </div>
+      <div className="form-group">
+        <label htmlFor="description">Campaign Description:</label>
+        <textarea name="description" id="pastConclusidescriptionons" value={formData.description} onChange={handleChange}></textarea>
       </div>
       <div className="form-group">
         <label htmlFor="startDate">Start Date:</label>
