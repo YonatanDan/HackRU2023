@@ -116,10 +116,6 @@ def openai_get_campaign_insights(campaign : Campaign, api_key: str):
 
 def _generate_result(campaign: Campaign, api_key: str):
     logging.critical(f'Generating result for campaign {campaign.name}')
-    results[campaign.uuid] = {
-        'message': 'in progress'
-    }
-    logging.critical(f'Generating result for campaign {campaign.name}2')
 
     audiences = openai_get_campaign_insights(campaign, api_key)
     campaign.audiences = audiences
@@ -178,9 +174,6 @@ def generate_campaign():
 def get_campaign(campaign_id):
     if campaign_id not in results:
         return jsonify({'message': 'Campaign not found!'}), 404
-
-    if results[campaign_id]['message'] == 'in progress':
-        return jsonify({'message': 'Campaign is still in progress!'}), 200
 
     result = {
         'name': results[campaign_id].name,
