@@ -21,13 +21,13 @@ To get started with the project, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone [repository-url]
+git clone git@github.com:ofeks10/HackRU2023.git
 ```
 
 2. Install the dependencies:
 
 ```bash
-cd [project-name]
+cd HackRU2023/campaign
 npm install
 ```
 
