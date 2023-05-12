@@ -50,16 +50,13 @@ const Chat = (props) => {
 
 	return (props.trigger) ? (
 		<div>
-			<div className="header-section">
-				<h1>ChatGPT</h1>
-				{storedValues.length < 1 && (
-					<p>
-					</p>
-				)}
+			<div className="header-section" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px' }}>
+			  <h1 style={{ fontSize: '24px', margin: '0', textAlign: 'center' }}>ChatGPT</h1>
+			  {storedValues.length < 1 && (
+			    <p></p>
+			  )}
 			</div>
-
 			<FormSection generateResponse={generateResponse} />
-
 			{storedValues.length > 0 && <AnswerSection storedValues={storedValues} />}
 		</div>
 	) : "";

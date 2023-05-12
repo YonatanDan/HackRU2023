@@ -56,6 +56,16 @@ section .content-container{
 	font-size: 2rem;
 }
 
+.content-container .chat-container {
+	position: absolute;
+	bottom: 40px;
+	right: 20px;
+	justify-content: flex-start;
+	align-items: flex-end;
+	margin-top: 20px;
+	margin-left: 20px;
+  }
+
 
 .CampaignForm {
     display: flex;
@@ -151,7 +161,7 @@ section .content-container{
 	max-width: 50%;
 }
 
-.CampaignForm .form-group .chat-btn {
+.content-container .chat-btn {
 	width: 80px;
 	height: 80px;
 	border-radius: 50%;

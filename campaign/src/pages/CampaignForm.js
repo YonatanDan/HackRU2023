@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import Chat from '../chat-components/Chat';
 
 function CampaignForm() {
@@ -139,11 +139,13 @@ function CampaignForm() {
           <div className="form-group">
             <button className="submit-button" type="submit">Submit</button>
           </div>
-          <div className='form-group'>
-            <button onClick={() => setChatButton(!chatButton)} className="chat-btn">Consult ChatGPT</button>
-          </div>
-          <Chat trigger={chatButton}> </Chat>
         </form>
+        <div className='chat-container'>
+            <button onClick={() => setChatButton(!chatButton)} className="chat-btn">Consult ChatGPT</button>
+        </div>
+        <div className='chat'>
+          <Chat trigger={chatButton}> </Chat>
+        </div>
       </div>
     </section>
   );

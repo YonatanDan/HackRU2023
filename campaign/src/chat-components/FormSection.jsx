@@ -12,8 +12,8 @@ const FormSection = ({ generateResponse }) => {
                 value={newQuestion}
                 onChange={(e) => setNewQuestion(e.target.value)}
             ></textarea>
-            <button className="btn" onClick={() => generateResponse(newQuestion, setNewQuestion)}>
-                Generate Response
+            <button className="btn" style={{ display: 'block', margin: '0 auto' }} onClick={() => generateResponse(newQuestion, setNewQuestion)}>
+              Generate Response
             </button>
         </div>
     )

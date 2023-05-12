@@ -1,143 +1,156 @@
-/*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+/* Chat.css */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Chat container */
+.chat {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
-.popup {
-    position: flex;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #ffffff;
-  color: #bbbbbb;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-@media screen and (max-width: 800px) {
-  body {
-    max-width: 100%;
-    padding: 0 20px;
-  }
-}
-
+/* Header section */
 .header-section {
-  margin: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .header-section h1 {
-  font-size: 2.7rem;
-  font-weight: 700;
+  font-size: 24px;
+  margin: 0;
+  text-align: center;
 }
 
-.header-section p {
-  font-size: 1rem;
-  font-weight: 300;
-  margin-top: 10px;
-}
-
+/* Form section */
 .form-section {
-  margin: 30px 0;
-}
-
-textarea,
-button {
-  width: 100%;
-  border-radius: 5px;
-  border: none;
-}
-
-.form-control {
   margin-bottom: 20px;
-  padding: 20px;
-  font-size: 1rem;
-  font-family: 'Poppins',
-    sans-serif;
-  outline: none;
-  background-color: #7423D2;
-  color: #DADADB;
-  transition: all 0.5s ease-in-out;
 }
 
-.form-control:focus {
-  border-left: 5px solid #7423D2;
-  border-top: 5px solid #FFA500;
-  border-top-left-radius: 0%;
-  border-bottom-left-radius: 0%;
-  border-top-right-radius: 0%;
-}
-
-.btn {
-  background: #7423D2;
-  color: #DADADB;
-  padding: 20px 0;
-  font-size: 1.2rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.5s ease-in-out;
-}
-
-.btn:hover {
-  border-left: 5px solid #FFA500;
-  border-top: 5px solid #FFA500;
-  border-top-left-radius: 0%;
-  border-bottom-left-radius: 0%;
-  border-top-right-radius: 0%;
-}
-
-.hr-line {
-  margin: 70px 0 20px;
-  border: 1px solid #343536;
-}
-
-/* .answer-container {
-  overflow: scroll;
-  max-height: 500px;
-} */
-/*
-.answer-section {
-  margin: 30px 0;
-  position: relative;
-
-}
-
-.answer-section .question {
-  background-color: #7423D2;
-  padding: 20px;
-}
-
-
-.answer-section .answer {
-  background-color: #717070;
-  padding: 20px;
-}
-
-.copy-icon {
-  position: absolute;
-  background-color: #7423D2;
-  width: 50px;
-  height: 50px;
+.form-section textarea {
+  width: 80vh;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  bottom: -10px;
-  right: -10px;
-  font-size: 1.2rem;
+}
+
+.form-section button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.5s ease-in-out;
+}
+
+.form-section button:hover {
+  background-color: #0056b3;
+}
+
+/* Answer section */
+.answer-section {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.answer-section p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.answer-section:last-child {
+  margin-bottom: 0;
+}
+
+/* AnswerSection.css */
+
+/* Horizontal line */
+.hr-line {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+/* Answer container */
+.answer-container {
+  margin-top: 20px;
+}
+
+/* Answer section */
+.answer-section {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.answer-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Question */
+.question {
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Answer */
+.answer {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+/* Copy icon */
+.copy-icon {
+  display: inline-block;
+  padding: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .copy-icon:hover {
-  background-color: #FFA500;
+  background-color: #0056b3;
 }
-*/
+
+.copy-icon i {
+  vertical-align: middle;
+}
+
+/* FormSection.css */
+
+/* Form section */
+.form-section {
+  margin-bottom: 20px;
+}
+
+/* Textarea */
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+/* Button */
+.btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
