@@ -4,7 +4,7 @@ This is the README file for our project from the 2023 Reichman University hackat
 
 ## Project Overview
 
-The project is a web application that has a front-end built with React and a back-end that runs in a Docker container.
+The project is a web application that has a front-end built with React and a back-end that runs in a few Docker container.
 
 ### Prerequisites
 
