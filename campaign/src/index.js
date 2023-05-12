@@ -35,16 +35,13 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout populations={populations} />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<CampaignForm />} />
-          <Route path="response" element={<Response populations={populations} />} />
-          {populations.map((population, index) => (
-            <Route
-              key={index}
-              path={`/Population/${population.name.replace(/\s+/g, '-').toLowerCase()}`}
-              element={<Population population={population} />}
-            />
-          ))}
+          <Route path="response" element={<Response  />} />
+          <Route
+              path={"population"}
+              element={<Population />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

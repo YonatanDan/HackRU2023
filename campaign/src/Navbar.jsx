@@ -1,6 +1,6 @@
 import React from "react";
-import "./styles/styles.css";
 import { NavLink } from "react-router-dom";
+import "./styles/styles.css";
 
 function Navbar({ populations }) {
   return (
@@ -16,17 +16,11 @@ function Navbar({ populations }) {
             Response
           </NavLink>
         </li>
-        {populations.map((population, index) => (
-          <li key={index}>
-            <NavLink
-              to={`/population/${population.name.replace(/\s+/g, '-').toLowerCase()}`}
-              activeClassName="activeLink"
-              className="population-link" // Add a CSS class for population links
-            >
-              {population.name}
-            </NavLink>
-          </li>
-        ))}
+        <li>
+          <NavLink to="/population" activeClassName="activeLink">
+            Population
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
