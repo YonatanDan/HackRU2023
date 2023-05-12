@@ -1,9 +1,19 @@
+import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import '../styles/Population.css';
 
 const Population = ({ population }) => {
   const postRef = useRef(null);
   const [copied, setCopied] = useState(false);
+  const [data, setData] = useState({}, []);
+
+  axios.get('http://127.0.0.1:5000/api/v1/campaign/get_pop/' + uuid + '/' + index).then((response) => {
+    setData(response.data);
+  }).catch((error) => {
+    console.log(error);
+  });
+
+  console.log(data);
 
   const handleCopy = () => {
     const postText = postRef.current.innerText;

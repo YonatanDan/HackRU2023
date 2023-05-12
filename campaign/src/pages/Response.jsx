@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Response = ({ populations }) => {
 
-  const [data, setData] = useState({});
+  const [data, setData] = useState({}, []);
   const {state} = useLocation();
   const uuid = state && state.uuid;
 
@@ -13,8 +13,6 @@ const Response = ({ populations }) => {
   }).catch((error) => {
     console.log(error);
   });
-
-  console.log(data);
 
   return (
     <div className="response-container">
