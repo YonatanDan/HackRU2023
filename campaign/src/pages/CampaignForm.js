@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Chat from '../chat-components/Chat';
 
 function CampaignForm() {
@@ -12,6 +13,7 @@ function CampaignForm() {
   const [pastConclusions, setPastConclusions] = useState('');
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [skills, setSkills] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get('http://127.0.0.1:5000/api/v1/skills/get')
@@ -27,6 +29,7 @@ function CampaignForm() {
       alert('Please fill out all required fields.');
       return;
     }
+
     // send data to the API
     axios.post("http://127.0.0.1:5000/api/v1/campaign/create",{
       name: name,
@@ -37,12 +40,12 @@ function CampaignForm() {
       skills: selectedSkills,
       description: description
     }).then(response => {
-      console.log(response.data.uuid);
-    }).catch(error => {});
+      navigate('/response', {state: {uuid: response.data.uuid}});
+    }).catch(error => {console.log(error.data.message);});
   };
 
   const handleCheckboxChange = (event) => {
-    setHistory(event.data);
+    setHistory(event.target.checked);
   };
 
   const handleChange = (event) => {

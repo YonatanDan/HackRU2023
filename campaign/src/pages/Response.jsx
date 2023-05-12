@@ -1,7 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Response = ({ populations }) => {
+
+  const [data, setData] = useState({});
+  const {state} = useLocation();
+  const uuid = state && state.uuid;
+
+  axios.get('http://127.0.0.1:5000/api/v1/campaign/get/' + uuid).then((response) => {
+    setData(response.data);
+  }).catch((error) => {
+    console.log(error);
+  });
+
+  console.log(data);
+
   return (
     <div className="response-container">
       <h1>Campaign General Info</h1>
