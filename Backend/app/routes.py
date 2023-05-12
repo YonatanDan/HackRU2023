@@ -179,7 +179,7 @@ def get_campaign(campaign_id):
     if campaign_id not in results:
         return jsonify({'message': 'Campaign not found!'}), 404
 
-    if results[campaign_id].message == 'in progress':
+    if results[campaign_id]['message'] == 'in progress':
         return jsonify({'message': 'Campaign is still in progress!'}), 200
 
     result = {
