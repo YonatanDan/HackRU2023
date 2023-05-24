@@ -8,7 +8,7 @@ import AnswerSection from './AnswerSection';
 import { useState } from 'react';
 
 const Chat = (props) => {
-    const REACT_APP_OPENAI_API_KEY='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'
+    const REACT_APP_OPENAI_API_KEY=''
 
 	const configuration = new Configuration({
 		apiKey: REACT_APP_OPENAI_API_KEY,
